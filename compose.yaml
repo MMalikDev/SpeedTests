@@ -1,0 +1,65 @@
+name: speeds
+networks:
+  proxy:
+    name: ${NETWORK_NAME:-proxy}
+
+services:
+  rust:
+    build: tests/rust/
+    image: code_rust
+    container_name: rust
+
+    environment:
+      LIMIT: ${LIMIT:-1000000}
+      RUNS: ${RUNS:-10}
+
+    networks:
+      proxy:
+
+  python:
+    build: tests/python/
+    image: code_py
+    container_name: python
+
+    environment:
+      LIMIT: ${LIMIT:-1000000}
+      RUNS: ${RUNS:-10}
+
+    networks:
+      proxy:
+
+  javascript:
+    build: tests/javascript/
+    image: code_js
+    container_name: javascript
+
+    environment:
+      LIMIT: ${LIMIT:-1000000}
+      RUNS: ${RUNS:-10}
+
+    networks:
+      proxy:
+
+  cpp:
+    build: tests/cpp/
+    image: code_cpp
+    container_name: cpp
+
+    environment:
+      LIMIT: ${LIMIT:-1000000}
+      RUNS: ${RUNS:-10}
+
+    networks:
+      proxy:
+
+  cbase:
+    build: tests/cbase/
+    image: code_c
+    container_name: cbase
+
+    environment:
+      LIMIT: ${LIMIT:-1000000}
+      RUNS: ${RUNS:-10}
+
+    networks:
+      proxy:
