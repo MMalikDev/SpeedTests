@@ -3,13 +3,11 @@ function get_value(key) {
 }
 
 function leibniz(n) {
-  let x = 1.0;
   let pi = 1.0;
-  for (let i = 2; i < n + 2; i++) {
-    x *= -1;
+  for (let i = 2; i < n; i++) {
+    const x = -1.0 + 2.0 * (i & 0x1);
     pi += x / (2 * i - 1);
   }
-
   return pi * 4;
 }
 

@@ -13,6 +13,14 @@ def leibniz(n: int) -> float:
     return pi * 4
 
 
+def bitwise_leibniz(n: int) -> float:
+    pi = 1
+    for i in range(2, n):
+        x = -1.0 + (2.0 * (i & 0x1))
+        pi += x / (2 * i - 1)
+    return pi * 4
+
+
 def main() -> None:
     limit = get_value("LIMIT")
     runs = get_value("RUNS")
