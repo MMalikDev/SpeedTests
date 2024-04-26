@@ -15,6 +15,7 @@ Run Project in specified environment
      -d     Run in Devcontainer
      -l     Run in Local env
      -c     Run in Docker
+     -s     Save Docker Compose Logs Results
      -h     Display this help
 
 Configure $0 defaults using .env file
@@ -27,6 +28,9 @@ Configure $0 defaults using .env file
     Keep Docker Logs:
         - KEEP_LOGS=True    ( 1 )
 
+    Test Variables:
+        RUNS=100
+        LIMIT=1000000
 
 EOF
     exit 1
@@ -163,15 +167,6 @@ use_venv(){
         mingw* | cygwin*) source .venv/Scripts/activate ;;
         *) log_error "$icon_start Unsupported operating system: $os" ;;
     esac
-}
-run_pytest(){
-    local command="pytest"
-    local containers=("$@")
-    
-    for container in "${containers[@]}"; do
-        printf "\n$icon_start Running Tests for $container service...\n\n"
-        docker exec -it "$container" $command
-    done
 }
 run_python(){
     printf "\n$icon_start Running Python in local venv\n\n"
