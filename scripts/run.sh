@@ -147,7 +147,7 @@ run_rust(){
     cd ..
 }
 run_rust_dev(){
-    printf "\n$icon_start Running Rust in devcontainber\n\n"
+    printf "\n$icon_start Running Rust in devcontainer\n\n"
     cd $(get_env RUST_IMAGE)
     cargo build --release
     handle_os target/release/app
@@ -176,7 +176,7 @@ run_python(){
     cd ..
 }
 run_python_dev(){
-    printf "\n$icon_start Running Python in devcontainber\n\n"
+    printf "\n$icon_start Running Python in devcontainer\n\n"
     cd $(get_env PYTHON_IMAGE)
     python3 main.py $@
     cd ..
