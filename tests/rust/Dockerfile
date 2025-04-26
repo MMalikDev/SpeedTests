@@ -1,5 +1,5 @@
 ARG VERSION=1.75-slim-bookworm
-FROM rust:$VERSION as builder
+FROM rust:$VERSION AS builder
 WORKDIR /code
 
 # Copy manifests
@@ -23,7 +23,7 @@ RUN adduser \
 
 # ------------------------------ #
 
-FROM builder as development
+FROM builder AS development
 USER code
 
 COPY --from=builder /code/target/release/app .
